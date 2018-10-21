@@ -2,7 +2,7 @@
 
 minutes, seconds timeout cook timer
 
-![img](doc/menu.png)
+<img src="doc/menu.png" width=200/>
 
 ## features
 
@@ -18,6 +18,11 @@ minutes, seconds timeout cook timer
 ## dev env
 
 - [vscode arduino](https://github.com/devel0/knowledge/blob/master/electronics/vscode-arduino.md)
+- arduino libraries ( available through Library Manager )
+  - [OneWire](https://www.pjrc.com/teensy/td_libs_OneWire.html)
+  - [Adafruit SSD1306](https://github.com/adafruit/Adafruit_SSD1306)
+  - [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library)
+  - [arduino-utils](https://github.com/devel0/iot-arduino-utils)
 - [serial](https://github.com/devel0/iot-arduino-nano-as-serial-reader)
 
 ## hardware
