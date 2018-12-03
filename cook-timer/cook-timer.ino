@@ -174,11 +174,17 @@ bool drawElapsed()
 
 int tone_test = 440;
 
+int min_press_cnt = 0;
+unsigned long min_press_accepted_timestamp; // uninitialized until min_press_cnt==0
+
 void loop()
 {
   bool min_pressed = digitalRead(MIN_PIN) == LOW;
   bool sec_pressed = digitalRead(SEC_PIN) == LOW;
   bool start_pressed = digitalRead(START_PIN) == LOW;
+
+  if (!min_pressed)
+    min_press_cnt = 0;
 
   if (state == STATE_IDLE && (TimeDiff(last_activity_time, millis()) / 1000 > AUTOPOWEROFF_TIMEOUT_SEC))
   {
@@ -241,10 +247,18 @@ void loop()
   }
   else if (min_pressed)
   {
-    beep();
-    ++mm;
-    if (mm > 60)
-      mm = 0;
+    if (
+        min_press_cnt == 0 ||
+        (min_press_cnt == 1 && TimeDiff(min_press_accepted_timestamp, millis()) > 2500) ||
+        (min_press_cnt > 1 && TimeDiff(min_press_accepted_timestamp, millis()) > 50))
+    {
+      min_press_accepted_timestamp = millis();
+      ++min_press_cnt;
+      beep();
+      ++mm;
+      if (mm > 60)
+        mm = 0;
+    }
   }
   else if (sec_pressed)
   {
