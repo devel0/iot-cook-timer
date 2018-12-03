@@ -2,8 +2,8 @@
 #define SERIAL_SPEED 57600
 #define TR_PIN 5
 #define MIN_PIN 6
-#define SEC_PIN 7
-#define START_PIN 8
+#define SEC_PIN 8
+#define START_PIN 7
 #define BUZ_PIN 9
 #define AUTOPOWEROFF_TIMEOUT_SEC 10
 
