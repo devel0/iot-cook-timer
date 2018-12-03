@@ -2,8 +2,8 @@
 #define SERIAL_SPEED 57600
 #define TR_PIN 5
 #define MIN_PIN 6
-#define SEC_PIN 7
-#define START_PIN 8
+#define SEC_PIN 8
+#define START_PIN 7
 #define BUZ_PIN 9
 #define AUTOPOWEROFF_TIMEOUT_SEC 10
 
@@ -112,7 +112,7 @@ int progress = 100;
 #define STATE_STARTED 1
 #define STATE_TIMEOUT 2
 
-#define TIMEOUT_BEEP_SEC 5
+#define TIMEOUT_BEEP_SEC 15
 
 int state = STATE_IDLE;
 long int start_time = 0;
@@ -157,7 +157,7 @@ void setup()
 bool drawElapsed()
 {
   int totsec = 60 * mm + ss;
-  int totsec_elapsed = (millis() - start_time) / 1000;
+  int totsec_elapsed = TimeDiff(start_time, millis()) / 1000;
   int totsec_diff = totsec - totsec_elapsed;
   if (totsec_elapsed < totsec)
   {
@@ -180,7 +180,7 @@ void loop()
   bool sec_pressed = digitalRead(SEC_PIN) == LOW;
   bool start_pressed = digitalRead(START_PIN) == LOW;
 
-  if (state == STATE_IDLE && ((millis() - last_activity_time) / 1000 > AUTOPOWEROFF_TIMEOUT_SEC))
+  if (state == STATE_IDLE && (TimeDiff(last_activity_time, millis()) / 1000 > AUTOPOWEROFF_TIMEOUT_SEC))
   {
     beep();
     shutdown();
@@ -226,7 +226,9 @@ void loop()
     return;
   }
 
-  if (min_pressed && sec_pressed)
+
+
+  if (min_pressed && sec_pressed || (state == STATE_TIMEOUT && (min_pressed || sec_pressed || start_pressed)))
   {
     mm = ss = 0;
     progress = 100;
@@ -279,9 +281,13 @@ void loop()
 
   if (state == STATE_TIMEOUT)
   {
-    if (millis() - timeout_start_time < TIMEOUT_BEEP_SEC * 1000)
+    if (TimeDiff(timeout_start_time, millis()) < TIMEOUT_BEEP_SEC * 1000)
     {
-      tone(BUZ_PIN, 495, 500);
+      for (int i = 0; i < 4; ++i)
+      {
+        tone(BUZ_PIN, 1000, 40);
+        delay(100);
+      }
       delay(500);
     }
     else
