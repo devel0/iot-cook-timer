@@ -15,7 +15,11 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Fonts/FreeSans9pt7b.h>
-#include <arduino-utils.h>
+
+// EDIT DebugMacros to set SERIAL_SPEED and enable/disable DPRINT_SERIAL
+#include <DPrint.h>
+#include <Util.h>
+using namespace SearchAThing::Arduino;
 
 #ifndef SSD1306_128_64
 #error "set display on Adafruit_SSD1306.h"
@@ -26,13 +30,13 @@ Adafruit_SSD1306 display(OLED_RESET);
 
 void TR_HIGH()
 {
-  DEBUG_PRINTLN("TR HIGH");
+  DPrintStrln("TR HIGH");
   digitalWrite(TR_PIN, HIGH);
 }
 
 void TR_LOW()
 {
-  DEBUG_PRINTLN("TR LOW");
+  DPrintStrln("TR LOW");
   digitalWrite(TR_PIN, LOW);
 }
 
@@ -121,10 +125,6 @@ long int last_activity_time = 0;
 
 void setup()
 {
-#ifdef SERIAL_DEBUG
-  Serial.begin(SERIAL_SPEED);
-#endif
-
   pinMode(TR_PIN, OUTPUT);
   TR_HIGH();
 
@@ -142,10 +142,10 @@ void setup()
   display.setTextColor(WHITE);
   display.setFont(&FreeSans9pt7b);
 
-  DEBUG_PRINT("display width = ");
-  DEBUG_PRINTLN(display.width());
-  DEBUG_PRINT("display height = ");
-  DEBUG_PRINTLN(display.height());
+  DPrintStr("display width = ");
+  DPrintInt16ln(display.width());
+  DPrintStr("display height = ");
+  DPrintInt16ln(display.height());
   last_activity_time = millis();
 }
 
@@ -190,11 +190,11 @@ void loop()
   {
     last_activity_time = millis();
     if (min_pressed)
-      DEBUG_PRINTLN("min pressed");
+      DPrintStrln("min pressed");
     if (sec_pressed)
-      DEBUG_PRINTLN("sec pressed");
+      DPrintStrln("sec pressed");
     if (start_pressed)
-      DEBUG_PRINTLN("start pressed");
+      DPrintStrln("start pressed");
   }
 
   if (TEST_BUZ == 1)
