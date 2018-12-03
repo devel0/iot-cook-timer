@@ -2,8 +2,8 @@
 #define SERIAL_SPEED 57600
 #define TR_PIN 5
 #define MIN_PIN 6
-#define SEC_PIN 8
-#define START_PIN 7
+#define SEC_PIN 7
+#define START_PIN 8
 #define BUZ_PIN 9
 #define AUTOPOWEROFF_TIMEOUT_SEC 10
 
@@ -226,9 +226,11 @@ void loop()
     return;
   }
 
-
-
-  if (min_pressed && sec_pressed || (state == STATE_TIMEOUT && (min_pressed || sec_pressed || start_pressed)))
+  if (
+      (min_pressed && sec_pressed) ||
+      (min_pressed && start_pressed) ||
+      (start_pressed && sec_pressed) ||
+      (state == STATE_TIMEOUT && (min_pressed || sec_pressed || start_pressed)))
   {
     mm = ss = 0;
     progress = 100;
