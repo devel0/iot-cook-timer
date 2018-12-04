@@ -41,7 +41,7 @@ $EXTMIN
   9
 $EXTMAX
  10
-255.4448
+144.611606446418
  20
 60.5
  30
@@ -501,19 +501,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2458457.149671019
+2458457.159757535
   9
 $TDUUPDATE
  40
-2458457.108004352
+2458457.118090868
   9
 $TDINDWG
  40
-0.0000000463
+0.0000001505
   9
 $TDUSRTIMER
  40
-0.7863644097
+0.0000959375
   9
 $USRTIMER
  70
@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-F8
+FB
   9
 $SURFTAB1
  70
@@ -1123,7 +1123,7 @@ ObjectDBX Classes
  90
         0
  91
-        6
+        4
 280
      0
 281
@@ -1139,7 +1139,7 @@ ObjectDBX Classes
  90
      4095
  91
-        6
+        4
 280
      0
 281
@@ -1155,7 +1155,7 @@ ObjectDBX Classes
  90
      4095
  91
-        6
+        4
 280
      0
 281
@@ -1171,7 +1171,7 @@ ObjectDBX Classes
  90
         0
  91
-        6
+        4
 280
      0
 281
@@ -1187,7 +1187,7 @@ ObjectDBX Classes
  90
      1153
  91
-        6
+        4
 280
      0
 281
@@ -1203,7 +1203,7 @@ ObjectDBX Classes
  90
      1152
  91
-        6
+        4
 280
      0
 281
@@ -1219,7 +1219,7 @@ ISM
  90
         0
  91
-        6
+        4
 280
      0
 281
@@ -1235,7 +1235,7 @@ ObjectDBX Classes
  90
      1153
  91
-        6
+        4
 280
      0
 281
@@ -1251,7 +1251,7 @@ SCENEOE
  90
      1153
  91
-        6
+        4
 280
      0
 281
@@ -1267,7 +1267,7 @@ ACDB_MLEADERSTYLE_CLASS
  90
      4095
  91
-        6
+        4
 280
      0
 281
@@ -2361,102 +2361,6 @@ AcDbLine
  31
 0.0
   0
-LINE
-  5
-D9
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbLine
- 10
-174.4448
- 20
--2.0
- 30
-0.0
- 11
-255.4448
- 21
--2.0
- 31
-0.0
-  0
-LINE
-  5
-DA
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbLine
- 10
-174.4448
- 20
-59.26989472816157
- 30
-0.0
- 11
-174.4448
- 21
--2.0
- 31
-0.0
-  0
-LINE
-  5
-DB
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbLine
- 10
-255.4448
- 20
-59.26989472816157
- 30
-0.0
- 11
-255.4448
- 21
--2.0
- 31
-0.0
-  0
-LINE
-  5
-DC
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbLine
- 10
-174.4448
- 20
-59.26989472816157
- 30
-0.0
- 11
-255.4448
- 21
-59.26989472816157
- 31
-0.0
-  0
 LWPOLYLINE
   5
 EB
@@ -2907,7 +2811,7 @@ ACAD_VISUALSTYLE
   3
 ACDB_RECOMPOSE_DATA
 350
-F7
+FA
   3
 AcDbVariableDictionary
 350
@@ -3449,7 +3353,7 @@ X-Ray
   0
 XRECORD
   5
-F7
+FA
 102
 {ACAD_REACTORS
 330
@@ -3621,7 +3525,7 @@ Model
  34
 0.0
  15
-255.4448
+144.611606446418
  25
 60.5
  35
@@ -5045,7 +4949,7 @@ TABLESTYLE
 102
 {ACAD_XDICTIONARY
 360
-F5
+F8
 102
 }
 330
@@ -12139,7 +12043,7 @@ DictionaryVariables
   0
 DICTIONARY
   5
-F5
+F8
 330
 3C
 100
@@ -12151,19 +12055,19 @@ AcDbDictionary
   3
 ACAD_ROUNDTRIP_2008_TABLESTYLE_CELLSTYLEMAP
 360
-F6
+F9
   0
 CELLSTYLEMAP
   5
-F6
+F9
 102
 {ACAD_REACTORS
 330
-F5
+F8
 102
 }
 330
-F5
+F8
 100
 AcDbCellStyleMap
  90
