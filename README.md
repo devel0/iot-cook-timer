@@ -9,7 +9,7 @@ minutes, seconds timeout cook timer
 - set minutes, seconds add with push buttons
 - countdown with progressbar
 - key tones
-- time expire audibile 5 sec sound
+- time expire audibile 10 sec sound
 - standby power <0.00uA
 - active power 18mA
 - battery LiOn 3.7V power source
@@ -23,16 +23,18 @@ minutes, seconds timeout cook timer
   - [Adafruit SSD1306](https://github.com/adafruit/Adafruit_SSD1306)
   - [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library)
   - [arduino-utils](https://github.com/devel0/iot-arduino-utils)
-- [serial](https://github.com/devel0/iot-arduino-nano-as-serial-reader)
 
 ## hardware
 
 - atmega328p
-- oled ssd1306 128x64 twi wire interface
+- oled ssd1306 128x64 two wire interface
 - piezo buzzer
 
 ## connections
 
+![img](doc/schematics.png)
+
+- [schematics and pcb](https://easyeda.com/editor#id=|7909cea401894073bcae4e8e6450cbe7|0390ee86049a4889954c34540dc8de61) also available ready to print [pcb](doc/pcb.pdf) [labels](doc/pcb-labels.pdf)
 - power on
   - push button ( replace T0/T2 in schematics below ) ; this required for power on cycle
 - atmega328p
@@ -53,10 +55,15 @@ minutes, seconds timeout cook timer
   - `GND`
   - `VCC` from load power management circuit (see below)  
 
+## 3d print
+
+- 3d print pieces [front](doc/front.stl) [lateral](doc/tri.stl) with freecad [src](doc/box.fcstd)
+
 ## power management circuit
 
 ![img](doc/power-management-circuit.png)
 
+- [qucs simulation](doc/prj.sch)
 - T0,T2 describe power on switch in a transient way ( T0 switches to close after 0.1ms enabling power while T2 switches to open after 0.3ms simulating push button release )
 - T1,T3 describe digital pin 5 that maintains system on until pin goes low disabling main transistor Q2N3906
 - RL represents atmega+oled consumption
