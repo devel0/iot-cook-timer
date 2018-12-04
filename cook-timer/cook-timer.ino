@@ -30,13 +30,11 @@ Adafruit_SSD1306 display(OLED_RESET);
 
 void TR_HIGH()
 {
-  DPrintStrln("TR HIGH");
   digitalWrite(TR_PIN, HIGH);
 }
 
 void TR_LOW()
 {
-  DPrintStrln("TR LOW");
   digitalWrite(TR_PIN, LOW);
 }
 
@@ -172,6 +170,8 @@ bool drawElapsed()
     return false;
 }
 
+volatile bool min_pressed = false, sec_pressed = false, start_pressed = false;
+
 int tone_test = 440;
 
 int min_press_cnt = 0;
@@ -179,12 +179,9 @@ unsigned long min_press_accepted_timestamp; // uninitialized until min_press_cnt
 
 void loop()
 {
-  bool min_pressed = digitalRead(MIN_PIN) == LOW;
-  bool sec_pressed = digitalRead(SEC_PIN) == LOW;
-  bool start_pressed = digitalRead(START_PIN) == LOW;
-
-  if (!min_pressed)
-    min_press_cnt = 0;
+  sec_pressed = digitalRead(SEC_PIN) == LOW;
+  min_pressed = digitalRead(MIN_PIN) == LOW;
+  start_pressed = digitalRead(START_PIN) == LOW;
 
   if (state == STATE_IDLE && (TimeDiff(last_activity_time, millis()) / 1000 > AUTOPOWEROFF_TIMEOUT_SEC))
   {
@@ -195,43 +192,12 @@ void loop()
   if (min_pressed || sec_pressed || start_pressed)
   {
     last_activity_time = millis();
-    if (min_pressed)
-      DPrintStrln("min pressed");
-    if (sec_pressed)
-      DPrintStrln("sec pressed");
-    if (start_pressed)
-      DPrintStrln("start pressed");
   }
 
-  if (TEST_BUZ == 1)
-  {
-    if (min_pressed)
-    {
-      tone_test += 10;
-    }
-    else if (sec_pressed)
-    {
-      tone_test -= 10;
-    }
+  if (!min_pressed)
+    min_press_cnt = 0;
 
-    for (int i = 0; i < 4; ++i)
-    {
-      tone(BUZ_PIN, tone_test, 50);
-      delay(150);
-    }
-    delay(500);
-
-    display.clearDisplay();
-
-    display.setTextSize(1);
-    display.setCursor(4, 13);
-    display.print(tone_test);
-
-    display.display();
-
-    return;
-  }
-
+  // reset
   if (
       (min_pressed && sec_pressed) ||
       (min_pressed && start_pressed) ||
@@ -244,12 +210,13 @@ void loop()
     state = STATE_IDLE;
     beep2();
     delay(500);
+    return;
   }
   else if (min_pressed)
   {
     if (
         min_press_cnt == 0 ||
-        (min_press_cnt == 1 && TimeDiff(min_press_accepted_timestamp, millis()) > 2500) ||
+        (min_press_cnt == 1 && TimeDiff(min_press_accepted_timestamp, millis()) > 500) ||
         (min_press_cnt > 1 && TimeDiff(min_press_accepted_timestamp, millis()) > 50))
     {
       min_press_accepted_timestamp = millis();
