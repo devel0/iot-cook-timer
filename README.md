@@ -17,7 +17,7 @@ minutes, seconds timeout cook timer
 
 ## dev env
 
-- [vscode arduino](https://github.com/devel0/knowledge/blob/master/electronics/vscode-arduino.md)
+- [vscode arduino](https://github.com/devel0/knowledge/blob/master/doc/vscode-arduino.md)
 - arduino libraries ( available through Library Manager )
   - [OneWire](https://www.pjrc.com/teensy/td_libs_OneWire.html)
   - [Adafruit SSD1306](https://github.com/adafruit/Adafruit_SSD1306)
