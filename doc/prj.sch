@@ -7,7 +7,6 @@
   <OpenDisplay=0>
   <Script=prj.m>
   <RunScript=0>
-  <SimInhibitWindow=0>
   <showFrame=0>
   <FrameText0=Title>
   <FrameText1=Drawn By:>
