@@ -11,6 +11,8 @@ minutes, seconds timeout cook timer
 * [connections](#connections)
 * [3d print](#3d-print)
 * [power management circuit](#power-management-circuit)
+  + [qucs](#qucs)
+  + [circuitjs](#circuitjs)
 <!-- TOCEND -->
 
 ## features
