@@ -4,6 +4,15 @@ minutes, seconds timeout cook timer
 
 <img src="doc/menu.png" width=200/>
 
+<!-- TOC -->
+* [features](#features)
+* [dev env](#dev-env)
+* [hardware](#hardware)
+* [connections](#connections)
+* [3d print](#3d-print)
+* [power management circuit](#power-management-circuit)
+<!-- TOCEND -->
+
 ## features
 
 - set minutes, seconds add with push buttons
@@ -61,6 +70,8 @@ minutes, seconds timeout cook timer
 
 ## power management circuit
 
+### qucs
+
 ![img](doc/power-management-circuit.png)
 
 - [qucs simulation](doc/prj.sch)
@@ -69,3 +80,9 @@ minutes, seconds timeout cook timer
 - RL represents atmega+oled consumption
 - R3 is a pullup resistor to avoid Q2N main transistor draw a little current 0.3uA when system powered off
 - graph shown power on switch (T0T2) at 1e-4s ; system autosustain (T1T3) at 2e-4 where Vm near 0mV ; power on switch release at 3e-4 with no effect due to BC547 activated transistor ; shutdown at 6e-4 by toggling T3 ( digital pin 5 low )
+
+### circuitjs
+
+- see [online](http://lushprojects.com/circuitjs/circuitjs.html?ctz=CQAgjCAMB0l3AWAnC1b0DYrTAgrMkrrhmABwBMkuIeAzLSKbQKYC0YYAUAM4h2QETIXTwVhUcCAAuAJwCuLLgDd+gkBywChbMpEn6E+utADsB7Hi4B3NTrBb1GIZC6zaprPryeNCMpJgVHBc0h5e4fziEBBsJhjoZEZG8HggCNB4eGh6nmRIZHgY7AF0dOYAJiwAZgCG8gA20qHpDn4BCG26+rEQ8YkOFHTBWBzQlHRoCBRgSBh4kGTs5pP6VXWNzbYpGnr8GAHdUG77Ac6nGm098K7bXf6to23c7p1PWG8SPXohtnQHElE4nOrncYgCbQQ5yu4D0XAAHukZhoiulkCiGEIAhQAHKrDAI2j4cDeBLgTEgAIAIQAwgRTIS6EE1Px0QghFiQAAFAD21hYsgA8gA7AA6ouFAFkaQBVUU8ACWwoADvJmoj-DoMOY8LMMelKSAAMoACzVFT5YolLGUW3S5yOCGGu2MXDAC1oFEO5yK+jYIJA4mM0AJfH8foe4PaFjkikJRViRCYkAYbFM5k5pvNlvFUtl8p5atVdv+hzapZd4BsF3OnxB1ahOj2jejt1oGH0tba9dsvokfedrgA5p6IVgo4PjiPsuJnTP0gF9MP+P9LlpV0vjn91JoV+8t-am94vZW2+Hoy22A8zw6Hi3y9W+-6hD5Rj3Is+P9fq9pKxWjnQhJeuI-ppBQBQaBg4icgAajSNKEv4Kwvos-AZoaAAygoAIIACJcEAA)
+
+<img src="doc/sim-circuitjs.gif" width=600/>
